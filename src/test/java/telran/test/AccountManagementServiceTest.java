@@ -32,22 +32,22 @@ class AccountManagementServiceTest {
 	@Autowired
 	AccountsService accountingService;
 
-	@BeforeAll
-	static void setUpBeforeAll() throws IOException {
-		if (Files.deleteIfExists(Path.of(TestConstants.FILE_NAME))) {
-			LOG.info("file {} has been deleted", TestConstants.FILE_NAME);
-		} else {
-			LOG.info("file {} not found", TestConstants.FILE_NAME);
-		}
-	}
+//	@BeforeAll
+//	static void setUpBeforeAll() throws IOException {
+//		if (Files.deleteIfExists(Path.of(TestConstants.FILE_NAME))) {
+//			LOG.info("file {} has been deleted", TestConstants.FILE_NAME);
+//		} else {
+//			LOG.info("file {} not found", TestConstants.FILE_NAME);
+//		}
+//	}
 
 	@Test
 	@Order(1)
 	void addAccount() {
 		Account account = new Account();
-		account.username = "test@gmail.com";
+		account.username = "test1@gmail.com";
 		account.password = "12345.com";
-		account.role = "TEST";
+		account.roles = new String[]{"TEST"};
 		assertTrue(accountingService.addAccount(account));
 	}
 
@@ -55,9 +55,9 @@ class AccountManagementServiceTest {
 	@Order(2)
 	void updateAccount() {
 		Account account = new Account();
-		account.username = "test@gmail.com";
+		account.username = "test1@gmail.com";
 		account.password = "12345678";
-		account.role = "TEST";
+		account.roles = new String[]{"TEST"};
 		assertTrue(accountingService.updateAccount(account));
 	}
 
